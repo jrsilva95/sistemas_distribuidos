@@ -17,7 +17,7 @@ public class ThreadAR implements Runnable {
 
         double pot = threadCont * 50;
         double raiz = Math.sqrt(pot);
-        System.out.println(raiz);
+        System.out.println(Thread.currentThread().getName() + " ecreve: " + raiz);
 
     }
 
