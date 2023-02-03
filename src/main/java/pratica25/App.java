@@ -1,6 +1,8 @@
 package pratica25;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 public class App {
@@ -9,7 +11,7 @@ public class App {
 
     public static void main(String[] args) {
 
-        //lista
+        lista = Collections.synchronizedList(lista);
 
         ThreadAR tar = new ThreadAR();
 
@@ -22,7 +24,7 @@ public class App {
         t2.start();
 
         try {
-            Thread.sleep(1000);
+            Thread.sleep(500);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
