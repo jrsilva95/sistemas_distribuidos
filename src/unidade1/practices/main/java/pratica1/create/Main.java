@@ -1,6 +1,6 @@
-package create;
+package pratica1.create;
 
-import create.MyThread;
+import pratica1.create.MyThread;
 
 public class Main {
 

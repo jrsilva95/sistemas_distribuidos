@@ -1,4 +1,4 @@
-package execute;
+package pratica1.execute;
 
 public class InfoThread implements Runnable {
     @Override

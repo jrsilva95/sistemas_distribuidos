@@ -1,4 +1,4 @@
-package create;
+package pratica1.create;
 
 public class MyThread implements Runnable {
     @Override

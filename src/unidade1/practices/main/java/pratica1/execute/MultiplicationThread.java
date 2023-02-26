@@ -1,4 +1,4 @@
-package execute;
+package pratica1.execute;
 
 public class MultiplicationThread implements Runnable {
     Integer v1, v2;
