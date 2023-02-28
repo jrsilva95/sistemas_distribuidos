@@ -1,0 +1,9 @@
+version: "3.7"
+
+services:
+  p1:
+    build:
+      context: .
+    stdin_open: true
+    tty: true
+    command: "java -cp app.jar main.Main"
