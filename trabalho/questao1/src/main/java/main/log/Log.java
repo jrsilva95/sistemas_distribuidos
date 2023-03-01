@@ -1,4 +1,6 @@
-package main;
+package main.log;
+
+import main.model.Message;
 
 import java.time.LocalDateTime;
 

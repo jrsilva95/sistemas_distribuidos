@@ -1,24 +1,27 @@
-package main;
+package main.client;
+
+import main.model.Message;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
+import java.net.InetAddress;
 
-import static main.Logger.*;
+import static main.log.Logger.*;
 
 public class Reciver implements Runnable {
 
     private boolean running = true;
-    private DatagramSocket datagramSocket;
+    private P client;
 
-    public Reciver(DatagramSocket datagramSocket) {
-        this.datagramSocket = datagramSocket;
+    public Reciver(P client) {
+        this.client = client;
     }
 
     public void close(){
-        this.datagramSocket.close();
+        client.getDatagramSocket().close();
         this.running = false;
     }
 
@@ -26,8 +29,20 @@ public class Reciver implements Runnable {
     public void run() {
         while (running) {
             try {
-                Message message = recive(datagramSocket);
-                print("Mensagem recebida: " + message);
+                Message message = recive(client.getDatagramSocket());
+                message.print();
+                if(!message.getClientOrigim().equals(client.getClientId())){
+
+                    message.setNewClient(client);
+
+                    if(message.isClientIdEven()){
+                        message.setValue(message.getValue() * 2);
+                    } else {
+                        message.setValue(message.getValue());
+                    }
+
+                    Sender.send(message, client);
+                }
             } catch (IOException e) {
                 error(e.getMessage());
             }

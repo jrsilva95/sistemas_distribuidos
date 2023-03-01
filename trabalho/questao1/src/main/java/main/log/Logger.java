@@ -1,4 +1,4 @@
-package main;
+package main.log;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;

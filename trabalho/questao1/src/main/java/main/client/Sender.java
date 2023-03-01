@@ -1,4 +1,6 @@
-package main;
+package main.client;
+
+import main.model.Message;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -7,18 +9,18 @@ import java.net.*;
 
 public class Sender {
 
-    public static void send(Message message, InetAddress address, int port, DatagramSocket socket) throws IOException {
+    public static void send(Message message, P client) throws IOException {
 
         byte[] byteObject = convertMessageToByteArray(message);
 
         DatagramPacket datagramPacket = new DatagramPacket(
                 byteObject,
                 byteObject.length,
-                address,
-                port
+                client.getTargetAddress(),
+                client.getTargetPort()
         );
 
-        socket.send(datagramPacket);
+        client.getDatagramSocket().send(datagramPacket);
 
     }
 
