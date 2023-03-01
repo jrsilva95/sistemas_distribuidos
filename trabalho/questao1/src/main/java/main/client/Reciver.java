@@ -31,7 +31,7 @@ public class Reciver implements Runnable {
             try {
                 Message message = recive(client.getDatagramSocket());
                 message.print();
-                if(!message.getClientOrigim().equals(client.getClientId())){
+
 
                     message.setNewClient(client);
 
@@ -40,6 +40,8 @@ public class Reciver implements Runnable {
                     } else {
                         message.setValue(message.getValue());
                     }
+
+                if(!message.getClientOrigim().equals(client.getClientId())){
 
                     Sender.send(message, client);
                 }
